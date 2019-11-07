@@ -48,4 +48,5 @@
     'license': "AGPL-3",
     'installable': True,
     'application': True,
+    'sequence': 1,
 }
