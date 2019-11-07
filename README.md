@@ -20,7 +20,7 @@ $ sudo systemctl enable docker
 $ docker-compose up  -d
 ```
 
-Then locate `localhost:11000` to access Odoo 12.0.
+Then locate `localhost:12000` to access Odoo 12.0.
 
 <img width="500px" src="https://github.com/Sayed09/odoo-12-docker/blob/master/static/odoo-apps.png" alt="Odoo is working.">
 
