@@ -2,14 +2,21 @@ version: '2'
 services:
   
   db:
+    container_name: odoo12_db
     image: postgres:10
+    ports:
+      - "5070:5432"
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata 
+    volumes:
+      - db-data:/var/lib/postgresql/data/pgdata  
     restart: always
 
   web:
+    container_name: odoo12_web
     image: odoo:12.0
     depends_on:
       - db
@@ -17,12 +24,12 @@ services:
       - "12000:8069"
     tty: true
     command: -- --dev=reload
-    #command: odoo scaffold /mnt/extra-addons/test_module
     volumes:
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
+      - web-data:/var/lib/odoo
     restart: always
 
 volumes:
-  db:
-  web:
+  db-data:
+  web-data:
